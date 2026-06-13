@@ -21,14 +21,14 @@ class ProfileController extends Controller
         $user = Auth::user();
 
         $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'max:255', 'unique:users,email,' . $user->id],
-            'tempat_lahir' => ['required', 'string', 'max:100'],
+            'name'          => ['required', 'string', 'max:255'],
+            'email'         => ['required', 'email', 'max:255', 'unique:users,email,' . $user->id],
+            'tempat_lahir'  => ['required', 'string', 'max:100'],
             'tanggal_lahir' => ['required', 'date', 'before:today'],
             'jenis_kelamin' => ['required', 'in:Laki-laki,Perempuan'],
-            'agama' => ['required', 'string', 'max:50'],
-            'pekerjaan' => ['required', 'string', 'max:100'],
-            'alamat' => ['required', 'string'],
+            'agama'         => ['required', 'string', 'max:50'],
+            'pekerjaan'     => ['required', 'string', 'max:100'],
+            'alamat'        => ['required', 'string'],
         ]);
 
         $user->update($validated);

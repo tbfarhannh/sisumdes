@@ -17,7 +17,7 @@ class LoginController extends Controller
     public function store(Request $request)
     {
         $credentials = $request->validate([
-            'nik' => ['required', 'string', 'size:16'],
+            'nik'      => ['required', 'string', 'size:16'],
             'password' => ['required', 'string'],
         ], [
             'nik.size' => 'NIK harus 16 digit.',

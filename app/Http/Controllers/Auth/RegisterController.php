@@ -19,24 +19,24 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nik' => ['required', 'string', 'size:16', 'regex:/^[0-9]+$/', Rule::unique('users', 'nik')],
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users', 'email')],
+            'nik'      => ['required', 'string', 'size:16', 'regex:/^[0-9]+$/', Rule::unique('users', 'nik')],
+            'name'     => ['required', 'string', 'max:255'],
+            'email'    => ['required', 'string', 'email', 'max:255', Rule::unique('users', 'email')],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ], [
-            'nik.size' => 'NIK harus 16 digit.',
-            'nik.regex' => 'NIK hanya boleh berisi angka.',
-            'nik.unique' => 'NIK sudah terdaftar.',
-            'password.min' => 'Kata sandi minimal 8 karakter.',
+            'nik.size'           => 'NIK harus 16 digit.',
+            'nik.regex'          => 'NIK hanya boleh berisi angka.',
+            'nik.unique'         => 'NIK sudah terdaftar.',
+            'password.min'       => 'Kata sandi minimal 8 karakter.',
             'password.confirmed' => 'Konfirmasi kata sandi tidak cocok.',
         ]);
 
         $user = User::create([
-            'nik' => $validated['nik'],
-            'name' => $validated['name'],
-            'email' => $validated['email'],
+            'nik'      => $validated['nik'],
+            'name'     => $validated['name'],
+            'email'    => $validated['email'],
             'password' => Hash::make($validated['password']),
-            'role' => 'user',
+            'role'     => 'user',
         ]);
 
         Auth::login($user);

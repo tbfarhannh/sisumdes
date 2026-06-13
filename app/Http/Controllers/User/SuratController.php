@@ -62,16 +62,16 @@ class SuratController extends Controller
         /** @var \App\Models\User $user */
         $user = Auth::user();
         $validated = $request->validate([
-            'nama_usaha' => ['required', 'string', 'max:255'],
-            'jenis_usaha' => ['required', 'string', 'max:255'],
+            'nama_usaha'   => ['required', 'string', 'max:255'],
+            'jenis_usaha'  => ['required', 'string', 'max:255'],
             'alamat_usaha' => ['required', 'string'],
         ]);
 
         PengajuanSurat::create([
-            'user_id' => $user->id,
+            'user_id'     => $user->id,
             'jenis_surat' => 'usaha',
-            'status' => 'pending',
-            'data_form' => array_merge($validated, $this->ambilDataPribadi($user)),
+            'status'      => 'pending',
+            'data_form'   => array_merge($validated, $this->ambilDataPribadi($user)),
         ]);
 
         return redirect()->route('user.riwayat.index')
@@ -84,14 +84,14 @@ class SuratController extends Controller
         $user = Auth::user();
         $validated = $request->validate([
             'barang_hilang' => ['required', 'string', 'max:255'],
-            'keterangan' => ['required', 'string'],
+            'keterangan'    => ['required', 'string'],
         ]);
 
         PengajuanSurat::create([
-            'user_id' => $user->id,
+            'user_id'     => $user->id,
             'jenis_surat' => 'kehilangan',
-            'status' => 'pending',
-            'data_form' => array_merge($validated, $this->ambilDataPribadi($user)),
+            'status'      => 'pending',
+            'data_form'   => array_merge($validated, $this->ambilDataPribadi($user)),
         ]);
 
         return redirect()->route('user.riwayat.index')
@@ -107,10 +107,10 @@ class SuratController extends Controller
         ]);
 
         PengajuanSurat::create([
-            'user_id' => $user->id,
+            'user_id'     => $user->id,
             'jenis_surat' => 'tidak_mampu',
-            'status' => 'pending',
-            'data_form' => array_merge($validated, $this->ambilDataPribadi($user)),
+            'status'      => 'pending',
+            'data_form'   => array_merge($validated, $this->ambilDataPribadi($user)),
         ]);
 
         return redirect()->route('user.riwayat.index')
@@ -120,14 +120,14 @@ class SuratController extends Controller
     private function ambilDataPribadi($user): array
     {
         return [
-            'nama' => $user->name,
-            'nik' => $user->nik,
-            'tempat_lahir' => $user->tempat_lahir,
+            'nama'          => $user->name,
+            'nik'           => $user->nik,
+            'tempat_lahir'  => $user->tempat_lahir,
             'tanggal_lahir' => $user->tanggal_lahir ? $user->tanggal_lahir->format('d-m-Y') : '',
             'jenis_kelamin' => $user->jenis_kelamin,
-            'agama' => $user->agama,
-            'pekerjaan' => $user->pekerjaan,
-            'alamat' => $user->alamat,
+            'agama'         => $user->agama,
+            'pekerjaan'     => $user->pekerjaan,
+            'alamat'        => $user->alamat,
         ];
     }
 }
