@@ -23,8 +23,8 @@
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16 lg:h-20">
                 <!-- Logo -->
-                <a href="/" class="flex items-center gap-3 flex-shrink-0">
-                    <div class="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center shadow-lg shadow-emerald-500/25">
+                <a href="/" class="flex items-center gap-3 shrink-0">
+                    <div class="w-10 h-10 bg-linear-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center shadow-lg shadow-emerald-500/25">
                         <i data-lucide="home" class="w-5 h-5 text-white"></i>
                     </div>
                     <div class="hidden sm:block">
@@ -43,12 +43,33 @@
 
                 <!-- CTA Buttons -->
                 <div class="hidden lg:flex items-center gap-3">
-                    <a href="/login" class="px-4 py-2 text-sm font-medium text-emerald-700 border border-emerald-300 rounded-lg hover:bg-emerald-50 transition-colors">
-                        Masuk
-                    </a>
-                    <a href="/register" class="px-5 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-emerald-500 to-teal-600 rounded-lg hover:from-emerald-600 hover:to-teal-700 shadow-md shadow-emerald-500/25 transition-all">
-                        Daftar
-                    </a>
+                    @auth
+                        <div x-data="{ open: false }" class="relative">
+                            <button @click="open = !open" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+                                <div class="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center">
+                                    <span class="text-emerald-700 font-semibold text-xs">{{ strtoupper(substr(auth()->user()->name, 0, 1)) }}</span>
+                                </div>
+                                <span class="hidden sm:inline">{{ auth()->user()->name }}</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                            </button>
+                            <div x-show="open" @click.away="open = false" x-transition class="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50">
+                                <a href="{{ route('user.dashboard') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50">Dashboard</a>
+                                <a href="{{ route('user.profile.edit') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50">Profil Saya</a>
+                                <hr class="my-1">
+                                <form action="{{ route('logout') }}" method="POST" class="block">
+                                    @csrf
+                                    <button type="submit" class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50">Keluar</button>
+                                </form>
+                            </div>
+                        </div>
+                    @else
+                        <a href="{{ route('login') }}" class="px-4 py-2 text-sm font-medium text-emerald-700 border border-emerald-300 rounded-lg hover:bg-emerald-50 transition-colors">
+                            Masuk
+                        </a>
+                        <a href="{{ route('register') }}" class="px-5 py-2.5 text-sm font-medium text-white bg-linear-to-r from-emerald-500 to-teal-600 rounded-lg hover:from-emerald-600 hover:to-teal-700 shadow-md shadow-emerald-500/25 transition-all">
+                            Daftar
+                        </a>
+                    @endauth
                 </div>
 
                 <!-- Mobile Hamburger -->
@@ -65,8 +86,17 @@
                 <a href="/berita" class="block px-4 py-3 text-gray-700 hover:bg-emerald-50 rounded-lg">Berita</a>
                 <a href="/kontak" class="block px-4 py-3 text-gray-700 hover:bg-emerald-50 rounded-lg">Kontak Kami</a>
                 <hr class="my-2">
-                <a href="/login" class="block px-4 py-3 text-emerald-700 font-medium">Masuk</a>
-                <a href="/register" class="block px-4 py-3 mt-1 text-center text-white bg-gradient-to-r from-emerald-500 to-teal-600 rounded-lg">Daftar</a>
+                @auth
+                    <a href="{{ route('user.dashboard') }}" class="block px-4 py-3 text-gray-700 hover:bg-emerald-50 rounded-lg">Dashboard</a>
+                    <a href="{{ route('user.profile.edit') }}" class="block px-4 py-3 text-gray-700 hover:bg-emerald-50 rounded-lg">Profil Saya</a>
+                    <form action="{{ route('logout') }}" method="POST" class="block">
+                        @csrf
+                        <button type="submit" class="w-full text-left px-4 py-3 text-red-600 hover:bg-red-50 rounded-lg">Keluar</button>
+                    </form>
+                @else
+                    <a href="{{ route('login') }}" class="block px-4 py-3 text-emerald-700 font-medium hover:bg-emerald-50 rounded-lg">Masuk</a>
+                    <a href="{{ route('register') }}" class="block px-4 py-3 mt-1 text-center text-white bg-linear-to-r from-emerald-500 to-teal-600 rounded-lg">Daftar</a>
+                @endauth
             </div>
         </nav>
     </header>
@@ -83,7 +113,7 @@
                 <!-- Brand -->
                 <div>
                     <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center">
+                        <div class="w-10 h-10 bg-linear-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center">
                             <i data-lucide="home" class="w-5 h-5 text-white"></i>
                         </div>
                         <div>

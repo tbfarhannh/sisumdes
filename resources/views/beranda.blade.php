@@ -5,7 +5,7 @@
 
 @section('content')
 <!-- Hero Section -->
-<section class="relative pt-20 lg:pt-24 pb-16 lg:pb-24 bg-gradient-to-br from-emerald-50 via-white to-teal-50 overflow-hidden">
+<section class="relative pt-20 lg:pt-24 pb-16 lg:pb-24 bg-linear-to-br from-emerald-50 via-white to-teal-50 overflow-hidden">
     <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMwMDAiIGZpbGwtb3BhY2l0eT0iMC4wMiI+PHBhdGggZD0iTTM2IDM0djJIMjR2LTJoMTJ6TTM2IDI0djJIMjR2LTJoMTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-50"></div>
     
     <!-- Decorative Blobs -->
@@ -20,13 +20,13 @@
                 </span>
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
                     Pelayanan Desa
-                    <span class="bg-gradient-to-r from-emerald-500 to-teal-600 bg-clip-text text-transparent">Modern & Mudah</span>
+                    <span class="bg-linear-to-r from-emerald-500 to-teal-600 bg-clip-text text-transparent">Modern & Mudah</span>
                 </h1>
                 <p class="text-lg text-gray-600 mb-8 leading-relaxed">
                     Ajukan surat keterangan secara online tanpa perlu antri. Cepat, transparan, dan langsung diproses oleh perangkat desa. Wujudkan pelayanan prima untuk masyarakat.
                 </p>
                 <div class="flex flex-wrap gap-4">
-                    <a href="/register" class="px-6 py-3.5 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold rounded-xl hover:from-emerald-600 hover:to-teal-700 shadow-xl shadow-emerald-500/25 transition-all inline-flex items-center gap-2">
+                    <a href="/register" class="px-6 py-3.5 bg-linear-to-r from-emerald-500 to-teal-600 text-white font-semibold rounded-xl hover:from-emerald-600 hover:to-teal-700 shadow-xl shadow-emerald-500/25 transition-all inline-flex items-center gap-2">
                         Ajukan Surat Sekarang <i data-lucide="arrow-right" class="w-5 h-5"></i>
                     </a>
                     <a href="/profil-desa" class="px-6 py-3.5 border-2 border-gray-300 text-gray-700 font-semibold rounded-xl hover:border-emerald-300 hover:text-emerald-600 transition-all">
@@ -82,7 +82,7 @@
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             <!-- Card 1 -->
             <div class="group bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl hover:border-emerald-200 transition-all duration-300 hover:-translate-y-1">
-                <div class="w-14 h-14 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                <div class="w-14 h-14 bg-linear-to-br from-emerald-400 to-emerald-600 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
                     <i data-lucide="file-text" class="w-7 h-7 text-white"></i>
                 </div>
                 <h3 class="text-lg font-bold text-gray-900 mb-2">Surat Keterangan Usaha</h3>
@@ -90,7 +90,7 @@
             </div>
             <!-- Card 2 -->
             <div class="group bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl hover:border-emerald-200 transition-all duration-300 hover:-translate-y-1">
-                <div class="w-14 h-14 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                <div class="w-14 h-14 bg-linear-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
                     <i data-lucide="megaphone" class="w-7 h-7 text-white"></i>
                 </div>
                 <h3 class="text-lg font-bold text-gray-900 mb-2">Surat Kehilangan</h3>
@@ -98,7 +98,7 @@
             </div>
             <!-- Card 3 -->
             <div class="group bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl hover:border-emerald-200 transition-all duration-300 hover:-translate-y-1">
-                <div class="w-14 h-14 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                <div class="w-14 h-14 bg-linear-to-br from-orange-400 to-orange-600 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
                     <i data-lucide="users" class="w-7 h-7 text-white"></i>
                 </div>
                 <h3 class="text-lg font-bold text-gray-900 mb-2">Surat Tidak Mampu</h3>
@@ -106,7 +106,7 @@
             </div>
             <!-- Card 4 -->
             <div class="group bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl hover:border-emerald-200 transition-all duration-300 hover:-translate-y-1">
-                <div class="w-14 h-14 bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                <div class="w-14 h-14 bg-linear-to-br from-purple-400 to-purple-600 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
                     <i data-lucide="home" class="w-7 h-7 text-white"></i>
                 </div>
                 <h3 class="text-lg font-bold text-gray-900 mb-2">Layanan Lainnya</h3>
@@ -121,7 +121,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
             <div class="relative">
-                <div class="bg-gradient-to-br from-emerald-400 to-teal-600 rounded-3xl p-1">
+                <div class="bg-linear-to-br from-emerald-400 to-teal-600 rounded-3xl p-1">
                     <div class="bg-gray-50 rounded-[22px] overflow-hidden">
                         <img src="https://picsum.photos/seed/desa1/600/400" alt="Desa Mekarsari" class="w-full h-80 object-cover">
                     </div>
@@ -191,7 +191,7 @@
 </section>
 
 <!-- Banner Ajakan Kedua -->
-<section class="py-16 bg-gradient-to-r from-emerald-600 to-teal-700 relative overflow-hidden">
+<section class="py-16 bg-linear-to-r from-emerald-600 to-teal-700 relative overflow-hidden">
     <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTIwIDBMMCAyMGgyMHYyMEwyMCAwbDIwIDIwSDB6Ii8+PC9nPjwvZz48L3N2Zz4=')]"></div>
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">Siap Mengajukan Surat Secara Online?</h2>
@@ -245,13 +245,13 @@
 <!-- Keluhan / Hubungi Kami -->
 <section class="py-20 bg-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl p-10 lg:p-14 shadow-xl border border-gray-200">
+        <div class="bg-linear-to-br from-gray-50 to-gray-100 rounded-3xl p-10 lg:p-14 shadow-xl border border-gray-200">
             <div class="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <i data-lucide="megaphone" class="w-8 h-8 text-emerald-600"></i>
             </div>
             <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Ada Keluhan?</h2>
             <p class="text-gray-600 mb-8 max-w-xl mx-auto">Sampaikan keluhan, saran, atau pertanyaan Anda kepada kami. Kami siap mendengarkan dan memberikan solusi terbaik.</p>
-            <a href="/kontak" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold rounded-xl hover:from-emerald-600 hover:to-teal-700 shadow-xl shadow-emerald-500/25 transition-all">
+            <a href="/kontak" class="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-emerald-500 to-teal-600 text-white font-bold rounded-xl hover:from-emerald-600 hover:to-teal-700 shadow-xl shadow-emerald-500/25 transition-all">
                 Hubungi Kami <i data-lucide="arrow-right" class="w-5 h-5"></i>
             </a>
         </div>

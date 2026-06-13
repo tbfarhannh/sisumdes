@@ -5,7 +5,7 @@
 
 @section('content')
 <!-- Hero Banner -->
-<section class="pt-20 lg:pt-24 pb-12 bg-gradient-to-br from-emerald-50 to-teal-50">
+<section class="pt-20 lg:pt-24 pb-12 bg-linear-to-br from-emerald-50 to-teal-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Profil Desa</h1>
         <p class="text-gray-600 text-lg">Mengenal lebih dekat Desa Mekarsari</p>
