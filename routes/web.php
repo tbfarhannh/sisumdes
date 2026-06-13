@@ -1,45 +1,61 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Public\LandingController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\ProfileController;
-use App\Http\Controllers\User\SuratController;
 use App\Http\Controllers\User\RiwayatController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\User\SuratController;
 
-// Halaman publik
-Route::get('/', fn() => view('beranda'))->name('beranda');
-Route::get('/profil-desa', fn() => view('profil-desa'))->name('profil-desa');
-Route::get('/berita', fn() => view('berita'))->name('berita');
-Route::get('/kontak', fn() => view('kontak'))->name('kontak');
+/* 
+|─────────────────────────────────────────────────────────────────────────
+|   PUBLIC ROUTES 
+|─────────────────────────────────────────────────────────────────────────
+*/
+Route::get('/',            [LandingController::class, 'home'])->name('beranda');
+Route::get('/profil-desa', [LandingController::class, 'profile'])->name('profil-desa');
+Route::get('/berita',      [LandingController::class, 'news'])->name('berita');
+Route::get('/kontak',      [LandingController::class, 'contact'])->name('kontak');
 
-// Guest routes
+/* 
+|─────────────────────────────────────────────────────────────────────────
+|   GUEST ROUTES 
+|─────────────────────────────────────────────────────────────────────────
+*/
 Route::middleware('guest')->group(function () {
-    Route::get('/register', [RegisterController::class, 'create'])->name('register');
+    Route::get('/register',  [RegisterController::class, 'create'])->name('register');
     Route::post('/register', [RegisterController::class, 'store']);
-    Route::get('/login', [LoginController::class, 'create'])->name('login');
-    Route::post('/login', [LoginController::class, 'store']);
+    Route::get('/login',     [LoginController::class, 'create'])->name('login');
+    Route::post('/login',    [LoginController::class, 'store']);
 });
 
-// Logout (bisa diakses user yang login)
+// ─── Logout Route ──────────────────────────────────────────────────────
 Route::post('/logout', [LoginController::class, 'destroy'])->name('logout')->middleware('auth');
 
-// User routes
+/* 
+|─────────────────────────────────────────────────────────────────────────
+|   USER ROUTES 
+|─────────────────────────────────────────────────────────────────────────
+*/
 Route::middleware('auth')->prefix('user')->name('user.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
-    // Pengajuan Surat
-    Route::get('/pengajuan', [SuratController::class, 'create'])->name('pengajuan.create');
-    Route::get('/pengajuan/usaha', [SuratController::class, 'formUsaha'])->name('pengajuan.usaha');
-    Route::post('/pengajuan/usaha', [SuratController::class, 'storeUsaha']);
-    Route::get('/pengajuan/kehilangan', [SuratController::class, 'formKehilangan'])->name('pengajuan.kehilangan');
-    Route::post('/pengajuan/kehilangan', [SuratController::class, 'storeKehilangan']);
-    Route::get('/pengajuan/tidak-mampu', [SuratController::class, 'formTidakMampu'])->name('pengajuan.tidak-mampu');
-    Route::post('/pengajuan/tidak-mampu', [SuratController::class, 'storeTidakMampu']);
+    Route::prefix('pengajuan')->name('pengajuan.')->group(function () {
+        Route::get('/',             [SuratController::class, 'create'])->name('create');
+        Route::get('/usaha',        [SuratController::class, 'formUsaha'])->name('usaha');
+        Route::post('/usaha',       [SuratController::class, 'storeUsaha'])->name('usaha.store');
+        Route::get('/kehilangan',   [SuratController::class, 'formKehilangan'])->name('kehilangan');
+        Route::post('/kehilangan',  [SuratController::class, 'storeKehilangan'])->name('kehilangan.store');
+        Route::get('/tidak-mampu',  [SuratController::class, 'formTidakMampu'])->name('tidak-mampu');
+        Route::post('/tidak-mampu', [SuratController::class, 'storeTidakMampu'])->name('tidak-mampu.store');
+    });
 
-    // Riwayat
     Route::get('/riwayat', [RiwayatController::class, 'index'])->name('riwayat.index');
+
+    Route::prefix('profile')->name('profile.')->group(function () {
+        Route::get('/edit',   [ProfileController::class, 'edit'])->name('edit');
+        Route::put('/update', [ProfileController::class, 'update'])->name('update');
+    });
 });
