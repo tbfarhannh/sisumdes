@@ -1,79 +1,87 @@
-@extends('layouts.public')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('title', 'Daftar')
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registrasi | SiSumDes</title>
 
-@section('content')
-<div class="min-h-screen pt-20 pb-12 flex items-center justify-center bg-gray-50">
-    <div class="w-full max-w-md mx-auto px-4">
-        <div class="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-            <div class="text-center mb-8">
-                <h1 class="text-2xl font-bold text-gray-900">Daftar Akun</h1>
-                <p class="text-gray-500 mt-1">Gunakan NIK Anda untuk mendaftar</p>
+    {{-- ========== Main CSS & JS ========== --}}
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+
+<body>
+    <div class="h-screen grid grid-cols-[1.2fr_1fr]">
+        {{-- ========== Left Section ========== --}}
+        <div class="relative flex justify-center items-center flex-col">
+            <img src="{{ asset('images/logo-labuan.png') }}" alt="Logo Pemerintahan Desa Labuan" loading="lazy" class="absolute top-9 left-10 h-10">
+            <div class="mt-16">
+                <h2 class="text-2xl mb-1">Buat Akun SiSumDes Anda!</h2>
+                <p>Lengkapi data dibawah ini untuk mendaftar akun dan masuk ke dalam sistem SiSumDes.</p>
+
+                <form action="{{ route('register') }}" method="POST" class="space-y-4 mt-7">
+                    @csrf
+                    <div>
+                        <label for="name" class="block font-semibold mb-1.5">Nama Lengkap <span class="text-red-500">*</span></label>
+                        <input type="text" id="name" name="name" value="{{ old('name') }}" placeholder="Nama lengkap sesuai KTP" class="w-full px-5 py-3.5 border border-gray-300 rounded-lg focus:ring focus:ring-var1 focus:border-var1 outline-none transition" required>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-5">
+                        <div>
+                            <label for="nik" class="block font-semibold mb-1.5">NIK <span class="text-red-500">*</span></label>
+                            <input type="text" id="nik" name="nik" value="{{ old('nik') }}" placeholder="16 digit NIK sesuai KTP" class="w-full px-5 py-3.5 border border-gray-300 rounded-lg focus:ring focus:ring-var1 focus:border-var1 outline-none transition" maxlength="16" pattern="[0-9]{16}" required>
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block font-semibold mb-1.5">Email <span class="text-red-500">*</span></label>
+                            <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="mis. contoh@mail.com" class="w-full px-5 py-3.5 border border-gray-300 rounded-lg focus:ring focus:ring-var1 focus:border-var1 outline-none transition" required>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-5">
+                        <div>
+                            <label for="password" class="block font-semibold mb-1.5">Password <span class="text-red-500">*</span></label>
+                            <input type="password" id="password" name="password" placeholder="Password min 8 karakter" class="w-full px-5 py-3.5 border border-gray-300 rounded-lg focus:ring focus:ring-var1 focus:border-var1 outline-none transition" required>
+                        </div>
+    
+                        <div>
+                            <label for="password_confirmation" class="block font-semibold mb-1.5">Konfirmasi Password <span class="text-red-500">*</span></label>
+                            <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Ulangi password Anda" class="w-full px-5 py-3.5 border border-gray-300 rounded-lg focus:ring focus:ring-var1 focus:border-var1 outline-none transition" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full py-3.5 mt-3 bg-var1 text-white font-semibold rounded-lg hover:bg-var2 transition-all duration-300 cursor-pointer">Daftar</button>
+                </form>
+
+                @if ($errors->any())
+                    <div class="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm">
+                        <ul class="list-disc list-inside">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <p class="mt-6 text-center">
+                    Sudah punya akun?
+                    <a href="{{ route('login') }}" class="text-var3 font-medium hover:underline">Login disini</a>
+                </p>
+
+                <a href="{{ route('beranda') }}" class="flex justify-center items-center gap-1 text-gray-500 hover:text-var1 mt-10">
+                    <i data-lucide="arrow-left" class="stroke-1.5 w-4.5 h-4.5"></i>    
+                    Kembali ke Beranda
+                </a>
             </div>
+        </div> {{-- ========== End Left Section ========== --}}
 
-            @if ($errors->any())
-                <div class="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm">
-                    <ul class="list-disc list-inside">
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
-            <form action="{{ route('register') }}" method="POST" class="space-y-5">
-                @csrf
-
-                <!-- NIK -->
-                <div>
-                    <label for="nik" class="block text-sm font-medium text-gray-700 mb-1">NIK (16 digit)</label>
-                    <input type="text" id="nik" name="nik" value="{{ old('nik') }}" 
-                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition"
-                           placeholder="Masukkan 16 digit NIK" maxlength="16" pattern="[0-9]{16}" required>
-                </div>
-
-                <!-- Nama Lengkap -->
-                <div>
-                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
-                    <input type="text" id="name" name="name" value="{{ old('name') }}" 
-                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition"
-                           placeholder="Nama sesuai KTP" required>
-                </div>
-
-                <!-- Email -->
-                <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Alamat Email</label>
-                    <input type="email" id="email" name="email" value="{{ old('email') }}" 
-                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition"
-                           placeholder="contoh@email.com" required>
-                </div>
-
-                <!-- Password -->
-                <div>
-                    <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Kata Sandi</label>
-                    <input type="password" id="password" name="password" 
-                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition"
-                           placeholder="Minimal 8 karakter" required>
-                </div>
-
-                <!-- Konfirmasi Password -->
-                <div>
-                    <label for="password_confirmation" class="block text-sm font-medium text-gray-700 mb-1">Konfirmasi Kata Sandi</label>
-                    <input type="password" id="password_confirmation" name="password_confirmation" 
-                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition"
-                           placeholder="Ulangi kata sandi" required>
-                </div>
-
-                <button type="submit" class="w-full py-3.5 bg-linear-to-r from-emerald-500 to-teal-600 text-white font-semibold rounded-xl hover:from-emerald-600 hover:to-teal-700 shadow-lg shadow-emerald-500/25 transition">
-                    Daftar
-                </button>
-            </form>
-
-            <p class="mt-6 text-center text-sm text-gray-500">
-                Sudah punya akun? 
-                <a href="{{ route('login') }}" class="text-emerald-600 font-medium hover:underline">Masuk di sini</a>
-            </p>
-        </div>
+        {{-- ========== Right Section ========== --}}
+        <div class="relative h-full overflow-hidden">
+            <img src="{{ asset('images/bg-regis.jpg') }}" alt="Pemandangan Desa Mekarsari" loading="lazy" class="w-full h-full object-cover object-center">
+            <div class="absolute inset-0 bg-var1/30"></div>
+        </div> {{-- ========== End Right Section ========== --}}
     </div>
-</div>
-@endsection
+</body>
+
+</html>

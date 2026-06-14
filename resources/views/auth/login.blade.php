@@ -1,59 +1,71 @@
-@extends('layouts.public')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('title', 'Masuk')
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login | SiSumDes</title>
 
-@section('content')
-<div class="min-h-screen pt-20 pb-12 flex items-center justify-center bg-gray-50">
-    <div class="w-full max-w-md mx-auto px-4">
-        <div class="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-            <div class="text-center mb-8">
-                <h1 class="text-2xl font-bold text-gray-900">Masuk</h1>
-                <p class="text-gray-500 mt-1">Gunakan NIK dan kata sandi Anda</p>
+    {{-- ========== Main CSS & JS ========== --}}
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+
+<body>
+    <div class="h-screen grid grid-cols-2">
+        {{-- ========== Left Section ========== --}}
+        <div class="relative h-full overflow-hidden">
+            <img src="{{ asset('images/bg-login.jpg') }}" alt="Pemandangan Desa Mekarsari" loading="lazy" class="w-full h-full object-cover object-center">
+            <div class="absolute inset-0 bg-var1/30"></div>
+        </div> {{-- ========== End Left Section ========== --}}
+
+        {{-- ========== Right Section ========== --}}
+        <div class="relative flex justify-center items-center flex-col">
+            <img src="{{ asset('images/logo-labuan.png') }}" alt="Logo Pemerintahan Desa Labuan" loading="lazy" class="absolute top-9 right-10 h-10">
+            <div class="mt-12">
+                <h2 class="text-2xl mb-1">Selamat datang di SiSumDes!</h2>
+                <p>Silahkan masuk dan kelola surat menyurat Anda pada sistem ini.</p>
+
+                <form action="{{ route('login') }}" method="POST" class="space-y-4 mt-7">
+                    @csrf
+                    <div>
+                        <label for="nik" class="block font-semibold mb-1.5">NIK <span class="text-red-500">*</span></label>
+                        <input type="text" id="nik" name="nik" value="{{ old('nik') }}" placeholder="Masukkan NIK 16 digit Anda" maxlength="16" class="w-full px-5 py-3.5 border border-gray-300 rounded-lg focus:ring focus:ring-var1 focus:border-var1 outline-none transition" required>
+                    </div>
+
+                    <div>
+                        <label for="password" class="block font-semibold mb-1.5">Password <span class="text-red-500">*</span></label>
+                        <input type="password" id="password" name="password" placeholder="Masukkan password Anda" class="w-full px-5 py-3.5 border border-gray-300 rounded-lg focus:ring focus:ring-var1 focus:border-var1 outline-none transition" required>
+                    </div>
+
+                    <div class="flex items-center gap-2.5">
+                        <input type="checkbox" id="remember" name="remember" class="w-4 h-4 rounded border-gray-300 text-var1 focus:ring-0 focus:border-var1 cursor-pointer">
+                        <label for="remember" class="text-gray-500 cursor-pointer">Ingat saya</label>
+                    </div>
+
+                    <button type="submit" class="w-full py-3.5 mt-3 bg-var1 text-white font-semibold rounded-lg hover:bg-var2 transition-all duration-300 cursor-pointer">Masuk</button>
+                </form>
+
+                @if ($errors->any())
+                    <div class="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm">
+                        @foreach ($errors->all() as $error)
+                            <p>{{ $error }}</p>
+                        @endforeach
+                    </div>
+                @endif
+
+                <p class="mt-6 text-center">
+                    Belum punya akun?
+                    <a href="{{ route('register') }}" class="text-var3 font-medium hover:underline">Daftar disini</a>
+                </p>
+
+                <a href="{{ route('beranda') }}" class="flex justify-center items-center gap-1 text-gray-500 hover:text-var1 mt-10">
+                    <i data-lucide="arrow-left" class="stroke-1.5 w-4.5 h-4.5"></i>    
+                    Kembali ke Beranda
+                </a>
             </div>
-
-            @if ($errors->any())
-                <div class="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm">
-                    @foreach ($errors->all() as $error)
-                        <p>{{ $error }}</p>
-                    @endforeach
-                </div>
-            @endif
-
-            <form action="{{ route('login') }}" method="POST" class="space-y-5">
-                @csrf
-
-                <!-- NIK -->
-                <div>
-                    <label for="nik" class="block text-sm font-medium text-gray-700 mb-1">NIK</label>
-                    <input type="text" id="nik" name="nik" value="{{ old('nik') }}" 
-                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition"
-                           placeholder="Masukkan NIK 16 digit" maxlength="16" required>
-                </div>
-
-                <!-- Password -->
-                <div>
-                    <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Kata Sandi</label>
-                    <input type="password" id="password" name="password" 
-                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition"
-                           placeholder="Kata sandi Anda" required>
-                </div>
-
-                <!-- Remember Me -->
-                <div class="flex items-center gap-2">
-                    <input type="checkbox" id="remember" name="remember" class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
-                    <label for="remember" class="text-sm text-gray-600">Ingat saya</label>
-                </div>
-
-                <button type="submit" class="w-full py-3.5 bg-linear-to-r from-emerald-500 to-teal-600 text-white font-semibold rounded-xl hover:from-emerald-600 hover:to-teal-700 shadow-lg shadow-emerald-500/25 transition">
-                    Masuk
-                </button>
-            </form>
-
-            <p class="mt-6 text-center text-sm text-gray-500">
-                Belum punya akun? 
-                <a href="{{ route('register') }}" class="text-emerald-600 font-medium hover:underline">Daftar di sini</a>
-            </p>
-        </div>
+        </div> {{-- ========== End Right Section ========== --}}
     </div>
-</div>
-@endsection
+</body>
+
+</html>

@@ -8,4 +8,23 @@
 @theme {
     --font-heading: "Plus Jakarta Sans Variable", sans-serif;
     --font-body: "DM Sans Variable", sans-serif;
+
+    --color-var1: #1A493F;
+    --color-var2: #11342C;
+    --color-var3: #F59E0B;
+    --color-var4: #DA8D09;
+    --color-var5: #FFFFFF;  
+    --color-var6: #F9FAFB;  
+    --color-var7: #101010;  
+    --color-var8: #3E3E3E;  
+}
+
+@layer base {
+    body {
+        @apply font-body text-var8 text-base;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-heading text-var7 font-bold;
+    }
 }
