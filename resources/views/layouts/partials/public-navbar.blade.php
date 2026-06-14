@@ -15,7 +15,7 @@
                 
                 <div class="space-x-2 ps-8">
                     <a href="{{ route('login') }}" class="px-6 py-2.25 rounded-full font-semibold text-var5 border border-var6 hover:bg-var2 transition-all duration-300 cursor-pointer">Masuk</a>
-                    <a href="{{ route('register') }}" class="px-6 py-2.25 rounded-full font-semibold text-var1 border border-var3 bg-var3 hover:bg-var4 transition-all duration-300 cursor-pointer">Daftar</a>
+                    <a href="{{ route('register') }}" class="px-6 py-2.25 rounded-full font-semibold text-var5 border border-var3 bg-var3 hover:bg-var4 transition-all duration-300 cursor-pointer">Daftar</a>
                 </div>
             </div>
 
