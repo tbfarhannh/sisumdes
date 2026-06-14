@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', 'Kontak Kami')
-@section('kontak_active', 'bg-emerald-50 text-emerald-600')
+@section('kontak_active', '!text-var3')
 
 @section('content')
 <section class="pt-20 lg:pt-24 pb-12 bg-linear-to-br from-emerald-50 to-teal-50">

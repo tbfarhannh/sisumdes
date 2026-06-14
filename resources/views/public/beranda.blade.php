@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', 'Beranda')
-@section('beranda_active', 'bg-emerald-50 text-emerald-600')
+@section('beranda_active', '!text-var3')
 
 @section('content')
 <!-- Hero Section -->

@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', 'Profil Desa')
-@section('profil_active', 'bg-emerald-50 text-emerald-600')
+@section('profil_active', '!text-var3')
 
 @section('content')
 <!-- Hero Banner -->
