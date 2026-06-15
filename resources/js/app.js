@@ -1,5 +1,5 @@
 import Alpine from 'alpinejs';
-import { createIcons, Menu, X, ChevronDown, User, Mail, Phone, MapPin, ArrowRight, CheckCircle, Users, Home, FileText, Megaphone, Plus, AlertTriangle, ArrowLeft } from 'lucide';
+import { createIcons, Menu, X, ChevronDown, User, Mail, Phone, MapPin, ArrowRight, CheckCircle, Users, Home, FileText, Megaphone, Plus, AlertTriangle, ArrowLeft, LogOut, UserRound, FileClock, ChevronRight } from 'lucide';
 
 window.Alpine = Alpine;
 Alpine.start();
@@ -7,6 +7,6 @@ Alpine.start();
 // Inisialisasi Lucide icons setelah halaman dimuat
 document.addEventListener('DOMContentLoaded', () => {
     createIcons({
-        icons: { Menu, X, ChevronDown, User, Mail, Phone, MapPin, ArrowRight, CheckCircle, Users, Home, FileText, Megaphone, Plus, AlertTriangle, ArrowLeft }
+        icons: { Menu, X, ChevronDown, User, Mail, Phone, MapPin, ArrowRight, CheckCircle, Users, Home, FileText, Megaphone, Plus, AlertTriangle, ArrowLeft, LogOut, UserRound, FileClock, ChevronRight }
     });
 });

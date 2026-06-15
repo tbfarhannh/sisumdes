@@ -2,10 +2,17 @@
 
 @section('title', 'Riwayat Pengajuan')
 @section('page_title', 'Riwayat Pengajuan Surat')
-@section('menu_riwayat', 'bg-emerald-50 text-emerald-700')
+@section('menu_riwayat', 'bg-var1 text-var5')
 
 @section('content')
-<div class="max-w-5xl mx-auto">
+
+<section>
+    <div class="flex items-center gap-1.5">
+        <h2 class="text-xl font-bold text-var7">Riwayat</h2>
+        <i data-lucide="chevron-right" class="w-4.5 h-4.5 mt-px"></i>
+        <p class="text-gray-600 text-sm mt-0.5">Halaman Riwayat Pengajuan Surat.</p>
+    </div>
+
     @if($pengajuan->isEmpty())
         <div class="text-center py-20">
             <div class="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -18,48 +25,49 @@
             </a>
         </div>
     @else
-        <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+        <div class="bg-var5 rounded-xl border border-gray-300 overflow-hidden mt-6">
             <table class="w-full">
                 <thead>
-                    <tr class="border-b border-gray-100 bg-gray-50/50">
-                        <th class="text-left px-6 py-4 text-sm font-semibold text-gray-600">Jenis Surat</th>
-                        <th class="text-left px-6 py-4 text-sm font-semibold text-gray-600">Tanggal</th>
-                        <th class="text-left px-6 py-4 text-sm font-semibold text-gray-600">Status</th>
+                    <tr class="border-b border-gray-300 bg-var1">
+                        <th class="text-left px-6 py-3.5 font-semibold text-var5 font-heading">Jenis Surat</th>
+                        <th class="text-left px-6 py-3.5 font-semibold text-var5 font-heading">Tanggal</th>
+                        <th class="text-left px-6 py-3.5 font-semibold text-var5 font-heading">Status</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-gray-100">
+                <tbody class="divide-y divide-gray-300">
                     @foreach($pengajuan as $item)
-                    <tr class="hover:bg-gray-50/50 transition-colors">
-                        <td class="px-6 py-4">
+                    <tr class="hover:bg-var6 transition-colors">
+                        <td class="px-6 py-3.5">
                             <div class="flex items-center gap-3">
                                 @if($item->jenis_surat == 'usaha')
-                                    <div class="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center"><i data-lucide="file-text" class="w-5 h-5 text-emerald-600"></i></div>
+                                    <div class="w-10 h-10 bg-var3 rounded-lg flex items-center justify-center"><i data-lucide="file-text" class="w-5 h-5 text-var5"></i></div>
                                 @elseif($item->jenis_surat == 'kehilangan')
-                                    <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center"><i data-lucide="megaphone" class="w-5 h-5 text-blue-600"></i></div>
+                                    <div class="w-10 h-10 bg-var3 rounded-lg flex items-center justify-center"><i data-lucide="megaphone" class="w-5 h-5 text-var5"></i></div>
                                 @else
-                                    <div class="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center"><i data-lucide="users" class="w-5 h-5 text-orange-600"></i></div>
+                                    <div class="w-10 h-10 bg-var3 rounded-lg flex items-center justify-center"><i data-lucide="users" class="w-5 h-5 text-var5"></i></div>
                                 @endif
-                                <span class="font-medium text-gray-900">{{ ucwords(str_replace('_', ' ', $item->jenis_surat)) }}</span>
+                                <span class="font-medium text-var7">{{ ucwords(str_replace('_', ' ', $item->jenis_surat)) }}</span>
                             </div>
                         </td>
-                        <td class="px-6 py-4 text-gray-600 text-sm">{{ $item->created_at->format('d M Y H:i') }}</td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-3.5 text-[15px]">{{ $item->created_at->format('d M Y H:i') }}</td>
+                        <td class="px-6 py-3.5">
                             @if($item->status == 'pending')
-                                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-700">Menunggu</span>
+                                <span class="inline-flex items-center px-5 py-1.5 rounded-full text-sm font-medium bg-yellow-100 text-yellow-700">Menunggu</span>
                             @elseif($item->status == 'disetujui')
-                                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">Disetujui</span>
+                                <span class="inline-flex items-center px-5 py-1.5 rounded-full text-sm font-medium bg-green-100 text-green-700">Disetujui</span>
                             @else
-                                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-100 text-red-700">Ditolak</span>
+                                <span class="inline-flex items-center px-5 py-1.5 rounded-full text-sm font-medium bg-red-100 text-red-700">Ditolak</span>
                             @endif
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-            <div class="px-6 py-4 border-t border-gray-100">
+            <div class="px-6 py-2 border-t border-gray-300">
                 {{ $pengajuan->links() }}
             </div>
         </div>
     @endif
-</div>
+</section>
+
 @endsection
