@@ -1,7 +1,7 @@
 <aside :class="sidebarOpen ? 'w-64' : 'w-20'" class="fixed inset-y-0 left-0 z-40 bg-var5 border-r border-gray-300 shadow-sm transition-all duration-300 flex flex-col">
     {{-- ========== Logo ========== --}}
     <div class="h-16 flex items-center justify-between px-6 border-b border-gray-300">
-        <img src="{{ asset('images/logo-labuan.png') }}" alt="Logo Pemerintahan Desa Labuan" loading="lazy" class="h-9">
+        <img src="{{ asset('images/logo.png') }}" alt="Logo Pemerintahan Desa Labuan" loading="lazy" class="h-9">
 
         {{-- <button @click="sidebarOpen = !sidebarOpen" class="p-1.5 rounded-lg hover:bg-gray-100 hidden lg:block">
             <i data-lucide="chevron-down" class="w-4 h-4 transition-transform" :class="sidebarOpen ? '' : '-rotate-90'"></i>

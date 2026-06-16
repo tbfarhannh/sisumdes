@@ -3,7 +3,7 @@
         <div class="flex items-center justify-between h-18">
             {{-- ========== Logo ========== --}}
             <a href="/" class="flex items-center gap-3 shrink-0">
-                <img src="{{ asset('images/logo-labuan-white.png') }}" alt="Logo Pemerintahan Desa Labuan" loading="lazy" class="h-9">
+                <img src="{{ asset('images/logo-white.png') }}" alt="Logo Pemerintahan Desa Labuan" loading="lazy" class="h-9">
             </a>
 
             {{-- ========== Desktop Menu ========== --}}

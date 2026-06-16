@@ -15,7 +15,7 @@
     <div class="h-screen grid grid-cols-[1.2fr_1fr]">
         {{-- ========== Left Section ========== --}}
         <div class="relative flex justify-center items-center flex-col">
-            <img src="{{ asset('images/logo-labuan.png') }}" alt="Logo Pemerintahan Desa Labuan" loading="lazy" class="absolute top-9 left-10 h-10">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo Pemerintahan Desa Labuan" loading="lazy" class="absolute top-9 left-10 h-10">
             <div class="mt-18">
                 <h2 class="text-2xl mb-1">Buat Akun SiSumDes Anda!</h2>
                 <p>Lengkapi data dibawah ini untuk mendaftar akun dan masuk ke dalam sistem SiSumDes.</p>

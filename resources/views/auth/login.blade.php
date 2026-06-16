@@ -21,7 +21,7 @@
 
         {{-- ========== Right Section ========== --}}
         <div class="relative flex justify-center items-center flex-col">
-            <img src="{{ asset('images/logo-labuan.png') }}" alt="Logo Pemerintahan Desa Labuan" loading="lazy" class="absolute top-9 right-10 h-10">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo Pemerintahan Desa Labuan" loading="lazy" class="absolute top-9 right-10 h-10">
             <div class="mt-12">
                 <h2 class="text-2xl mb-1">Selamat datang di SiSumDes!</h2>
                 <p>Silahkan masuk dan kelola surat menyurat Anda pada sistem ini.</p>

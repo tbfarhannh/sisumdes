@@ -3,7 +3,7 @@
         <div class="flex justify-between gap-14 mb-12">
             {{-- ========== Brand ========== --}}
             <div class="w-90">
-                <img src="{{ asset('images/logo-labuan-white.png') }}" alt="Logo Pemerintahan Desa Labuan" loading="lazy" class="h-13">
+                <img src="{{ asset('images/logo-white.png') }}" alt="Logo Pemerintahan Desa Labuan" loading="lazy" class="h-13">
                 <p class="text-var5/80 mt-4">Desa yang maju, mandiri, dan sejahtera dengan menjunjung tinggi nilai-nilai kebersamaan dan gotong royong.</p>
             </div>
 
